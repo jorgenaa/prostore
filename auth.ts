@@ -3,7 +3,6 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from '@/db/prisma';
 import CredentialsProvider from "next-auth/providers/credentials";
 import { compare } from "bcrypt-ts-edge";
-import type { AuthOptions  } from "next-auth";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
     pages: {
@@ -41,10 +40,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                     // If password is correct, return user
                     if (isMatch) {
                         return {
-                        id: user.id,
-                        name: user.name,
-                        email: user.email,
-                        role: user.role,
+                            id: user.id,
+                            name: user.name,
+                            email: user.email,
+                            role: user.role,
                         };
                     }
                 }
@@ -67,7 +66,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             return session
         },
     }
-}) satisfies AuthOptions;
+});
 
 
 
